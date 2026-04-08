@@ -8,6 +8,7 @@ const ViewProjects = () => {
   const { projects, fetchProjects, updateProject, deleteProject, setProjects } =
     useContext(AppContext);
 
+
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -36,7 +37,7 @@ const ViewProjects = () => {
     };
     fetchData();
   }, []);
-
+ 
   // Modal open
   const handleModalOpen = (project) => {
     setSelectedProject(project);

@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import AppContext from './Context/appContext';
-import { useContext } from 'react';
+// import AppContext from './Context/appContext';
+// import { useContext } from 'react';
 import Navbar from './Components/Navbar';
 import Carousal from './Components/Carousal';
 import Skills from './Components/Skills';
@@ -12,17 +11,14 @@ import Footer from './Components/Footer';
 import Admin from './Components/admin';
 import Dashboard from './Components/dashboard';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 
 function App() {
-  const context = useContext(AppContext)
-  const { helloworld } = context
-  console.log(helloworld)
+
+
   return (
     <div className="App">
      <Switch>

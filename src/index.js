@@ -16,7 +16,6 @@ root.render(
     <App />
     </AppState>
     </Router>
-
   </React.StrictMode>
 );
 

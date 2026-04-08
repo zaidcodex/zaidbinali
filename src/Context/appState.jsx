@@ -1,9 +1,9 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import AppContext from './appContext'
 import { useState } from 'react'
 
 const AppState = (props) => {
-    const [helloworld, setHelloworld] = useState("Helloworld")
+    // const [helloworld, setHelloworld] = useState("Helloworld")
       const [projects, setProjects] = useState([]);
     
     
@@ -14,7 +14,7 @@ const AppState = (props) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password})
     });
 
  
@@ -120,7 +120,7 @@ const deleteProject = async (projectId) => {
 
 
     return (
-        <AppContext.Provider value={{helloworld,setProjects, deleteProject, updateProject, loggedIn, addProject, fetchProjects, projects}}>
+        <AppContext.Provider value={{setProjects, deleteProject, updateProject, loggedIn, addProject, fetchProjects, projects}}>
             {props.children}
         </AppContext.Provider>
     )
