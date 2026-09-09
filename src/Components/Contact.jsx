@@ -2,8 +2,7 @@ import React, { useState } from "react";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
-
-  const email = "zaidalicodex@gmail.com";
+  const email = "hamzaali48@gmail.com";
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -11,270 +10,290 @@ const Contact = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const socials = [
-    {
-      label: "GitHub",
-      href: "https://github.com/zaidcodex",
-      color: "#c9a0f0",
-      glow: "rgba(201,160,240,0.4)",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-        </svg>
-      ),
-    },
-    {
-      label: "LinkedIn",
-      href: "https://linkedin.com",
-      color: "#4cc9f0",
-      glow: "rgba(76,201,240,0.4)",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-      ),
-    },
-    {
-      label: "Email",
-      href: `mailto:${email}`,
-      color: "#f72585",
-      glow: "rgba(247,37,133,0.4)",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="22" height="22">
-          <rect x="2" y="4" width="20" height="16" rx="2"/>
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-        </svg>
-      ),
-    },
-  ];
-
   return (
     <>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+      <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+        @keyframes shimmerLine {
+          0%   { background-position: -200% center; }
+          100% { background-position: 200% center; }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+          0%,100% { opacity: 1; transform: scale(1); }
+          50%      { opacity: 0.5; transform: scale(1.4); }
+        }
 
         .ct-section {
           position: relative;
+          width: 100%;
+          background: #000000;
+          font-family: 'DM Sans', sans-serif;
+          padding: 30px 0 20px;
           overflow: hidden;
-          padding: 6rem 1.5rem 4rem;
-          background:
-            radial-gradient(ellipse 70% 60% at 50% 0%,   rgba(114,9,183,0.22)  0%, transparent 60%),
-            radial-gradient(ellipse 55% 50% at 10% 100%, rgba(247,37,133,0.15) 0%, transparent 60%),
-            radial-gradient(ellipse 50% 50% at 90% 80%,  rgba(67,97,238,0.15)  0%, transparent 60%),
-            linear-gradient(180deg, #0b0820 0%, #06040f 100%);
         }
+
+        /* faint orb */
         .ct-section::before {
           content: '';
-          position: absolute; inset: 0;
-          background-image:
-            linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-          background-size: 52px 52px;
+          position: absolute;
+          width: 500px; height: 300px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(108,61,232,0.18), transparent 70%);
+          top: -80px; left: 50%;
+          transform: translateX(-50%);
+          filter: blur(80px);
           pointer-events: none;
         }
 
-        /* top separator wave */
-        .ct-wave {
+        /* shimmer lines */
+        .ct-top-line, .ct-bottom-line {
           position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 3px;
-          background: linear-gradient(90deg, #f72585, #7209b7, #4361ee, #4cc9f0);
-          background-size: 200%;
-          animation: ctShimmer 3s linear infinite;
+          left: 0; right: 0; height: 1px;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(108,61,232,0.5) 20%,
+            rgba(167,139,250,1) 50%,
+            rgba(108,61,232,0.5) 80%,
+            transparent 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmerLine 4s linear infinite;
         }
-        @keyframes ctShimmer { 0%{background-position:0%} 100%{background-position:200%} }
+        .ct-top-line    { top: 0; }
+        .ct-bottom-line { bottom: 0; animation-delay: -2s; }
 
-        /* orbs */
-        .ct-orb {
-          position: absolute; border-radius: 50%;
-          filter: blur(90px); pointer-events: none;
+        /* inner row */
+        .ct-row {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          grid-template-columns: 1fr auto auto auto auto;
+          align-items: center;
+          gap: 0 40px;
+          animation: fadeUp 0.7s ease both;
         }
-        .ct-orb-1 {
-          width: 320px; height: 320px;
-          background: radial-gradient(circle, rgba(114,9,183,0.35), transparent 70%);
-          top: -80px; left: 50%; transform: translateX(-50%);
-          animation: ctFloat 10s ease-in-out infinite;
+        @media (max-width: 900px) {
+          .ct-row {
+            grid-template-columns: 1fr 1fr;
+            gap: 28px 32px;
+          }
+          .ct-btn-wrap { grid-column: 1 / -1; }
         }
-        @keyframes ctFloat { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-22px)} }
+        @media (max-width: 540px) {
+          .ct-row { grid-template-columns: 1fr; }
+          .ct-btn-wrap { grid-column: auto; }
+        }
 
-        /* inner */
-        .ct-inner {
-          position: relative; z-index: 1;
-          max-width: 640px; margin: 0 auto;
-          display: flex; flex-direction: column; align-items: center; gap: 2.8rem;
-          text-align: center;
-        }
-
-        /* heading */
-        .ct-head { animation: ctFadeUp 0.8s ease both; }
+        /* left heading */
         .ct-eyebrow {
-          display: inline-block;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.72rem; font-weight: 500;
-          letter-spacing: 3px; text-transform: uppercase;
-          color: rgba(255,255,255,0.35); margin-bottom: 0.7rem;
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          color: #7c6ff7;
+          margin-bottom: 6px;
+          align-item:start;
         }
         .ct-title {
-          font-family: 'Syne', sans-serif; font-weight: 800;
-          font-size: clamp(2.4rem, 7vw, 3.8rem);
-          background: linear-gradient(135deg, #fff 0%, #d8b4fe 45%, #f72585 100%);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-          line-height: 1; margin: 0 0 1rem;
+          font-family: 'Syne', sans-serif;
+          font-weight: 800;
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          color: #fff;
+          margin: 0 0 8px;
+          line-height: 1.15;
+          text-align:start;
         }
-        .ct-divider {
-          width: 64px; height: 3px; margin: 0 auto; border-radius: 99px;
-          background: linear-gradient(90deg, #f72585, #7209b7, #4361ee, #4cc9f0);
-          background-size: 200%;
-          animation: ctShimmer 3s linear infinite;
-        }
-        .ct-subtitle {
-          font-family: 'DM Sans', sans-serif; font-weight: 300;
-          font-size: 1rem; color: rgba(255,255,255,0.45);
-          margin-top: 1rem; line-height: 1.7;
+        .ct-sub {
+          font-size: 0.8rem;
+          color: rgba(255,255,255,0.38);
+          margin: 0;
+          line-height: 1.5;
+          max-width: 320px;
         }
 
-        /* social icons */
-        .ct-socials {
-          display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-          animation: ctFadeUp 0.8s 0.15s ease both;
-        }
-        .ct-social-btn {
-          display: flex; align-items: center; gap: 0.55rem;
-          font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
-          color: rgba(255,255,255,0.75);
+        /* contact item */
+        .ct-item {
+          display: flex;
+          align-items: center;
+          gap: 14px;
           text-decoration: none;
-          padding: 0.7rem 1.4rem;
-          border-radius: 99px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.1);
-          transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s, border-color 0.25s, color 0.25s, background 0.25s;
-        }
-        .ct-social-btn:hover {
-          transform: translateY(-5px);
-          color: var(--acc);
-          border-color: var(--acc);
-          background: rgba(255,255,255,0.07);
-          box-shadow: 0 0 24px var(--glow), 0 10px 20px rgba(0,0,0,0.25);
-        }
-        .ct-social-icon {
-          color: var(--acc);
-          display: flex; align-items: center;
-          filter: drop-shadow(0 0 0px var(--acc));
-          transition: filter 0.25s;
-        }
-        .ct-social-btn:hover .ct-social-icon {
-          filter: drop-shadow(0 0 8px var(--acc));
-        }
-
-        /* email copy pill */
-        .ct-email-wrap { animation: ctFadeUp 0.8s 0.3s ease both; }
-        .ct-email-pill {
-          display: inline-flex; align-items: center; gap: 0.75rem;
-          font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
-          color: rgba(255,255,255,0.6);
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 99px; padding: 0.65rem 1.4rem;
           cursor: pointer;
-          transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.2s;
-          user-select: none;
-        }
-        .ct-email-pill:hover {
-          border-color: rgba(247,37,133,0.5);
-          color: rgba(255,255,255,0.9);
-          background: rgba(247,37,133,0.07);
-          transform: translateY(-3px);
-        }
-        .ct-email-pill.copied {
-          border-color: rgba(82,214,94,0.6);
-          color: #52d65e;
-          background: rgba(82,214,94,0.08);
-        }
-        .ct-copy-icon {
-          font-size: 0.85rem; opacity: 0.5;
           transition: opacity 0.2s;
+          white-space: nowrap;
         }
-        .ct-email-pill:hover .ct-copy-icon { opacity: 1; }
+        .ct-item:hover { opacity: 0.8; }
 
-        /* footer bar */
-        .ct-footer {
-          position: relative; z-index: 1;
-          margin-top: 3rem;
-          padding-top: 2rem;
-          border-top: 1px solid rgba(255,255,255,0.07);
-          text-align: center;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.78rem;
-          color: rgba(255,255,255,0.25);
-          letter-spacing: 0.5px;
-          animation: ctFadeUp 0.8s 0.45s ease both;
+        .ct-item-icon {
+          width: 42px; height: 42px;
+          border-radius: 10px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.09);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
         }
-        .ct-footer span {
-          background: linear-gradient(90deg, #f72585, #7209b7);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+
+        .ct-item-label {
+          font-size: 0.72rem;
+          color: rgba(255,255,255,0.38);
+          margin-bottom: 3px;
+          font-weight: 500;
+        }
+        .ct-item-value {
+          font-size: 0.88rem;
           font-weight: 600;
+          color: rgba(255,255,255,0.85);
         }
 
-        @keyframes ctFadeUp {
-          from { opacity:0; transform: translateY(22px); }
-          to   { opacity:1; transform: translateY(0); }
+        /* divider between items */
+        .ct-divider-v {
+          width: 1px;
+          height: 48px;
+          background: rgba(255,255,255,0.08);
+          flex-shrink: 0;
         }
+        @media (max-width: 900px) { .ct-divider-v { display: none; } }
 
-        @media (max-width: 480px) {
-          .ct-section { padding: 4rem 1rem 3rem; }
-          .ct-social-btn { padding: 0.6rem 1.1rem; font-size: 0.82rem; }
+        /* Let's Talk button */
+        .ct-btn-wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+        }
+        .ct-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 14px 32px;
+          border-radius: 10px;
+          background: linear-gradient(135deg, #6c3de8, #4f28c4);
+          color: #fff;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 1rem;
+          font-weight: 700;
+          text-decoration: none;
+          border: none;
+          cursor: pointer;
+          transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+          white-space: nowrap;
+          box-shadow: 0 0 24px rgba(108,61,232,0.4);
+        }
+        .ct-btn:hover {
+          background: linear-gradient(135deg, #7c4ff7, #5a2fd4);
+          transform: translateY(-2px);
+          box-shadow: 0 0 36px rgba(108,61,232,0.6);
+          color: #fff;
+        }
+        .ct-btn-hint {
+          font-size: 0.72rem;
+          color: rgba(255,255,255,0.3);
+          text-align: center;
+        }
+        .ct-btn-hint .green-dot {
+          display: inline-block;
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: #22c55e;
+          box-shadow: 0 0 5px #22c55e;
+          margin-right: 5px;
+          animation: pulse 2s ease-in-out infinite;
+          vertical-align: middle;
         }
       `}</style>
 
       <section className="ct-section" id="contacts">
-        <div className="ct-wave" />
-        <div className="ct-orb ct-orb-1" />
+        <div className="ct-top-line" />
+        <div className="ct-bottom-line" />
 
-        <div className="ct-inner">
-          {/* Heading */}
-          <div className="ct-head">
-            <span className="ct-eyebrow">Don't be a stranger</span>
-            <h2 className="ct-title">Get In Touch</h2>
-            <div className="ct-divider" />
-            <p className="ct-subtitle">
-              Open to new opportunities, collaborations, or just a friendly chat.<br />
-              My inbox is always open!
-            </p>
-          </div>
+        <div className="px-4 px-lg-5" style={{ position: "relative", zIndex: 1 }}>
+          <div className="ct-row">
 
-          {/* Social buttons */}
-          <div className="ct-socials">
-            {socials.map(({ label, href, color, glow, icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={label !== "Email" ? "_blank" : undefined}
-                rel="noreferrer"
-                className="ct-social-btn"
-                style={{ "--acc": color, "--glow": glow }}
-              >
-                <span className="ct-social-icon">{icon}</span>
-                {label}
-              </a>
-            ))}
-          </div>
-
-          {/* Email copy pill */}
-          <div className="ct-email-wrap">
-            <div
-              className={`ct-email-pill ${copied ? "copied" : ""}`}
-              onClick={copyEmail}
-              title="Click to copy"
-            >
-              {copied ? "✓ Copied!" : email}
-              <span className="ct-copy-icon">{copied ? "✓" : "⎘"}</span>
+            {/* Left — heading */}
+            <div>
+              <p className="ct-eyebrow">Let's Work Together</p>
+              <h2 className="ct-title">Have a project in mind?</h2>
+              <p className="ct-sub">I'm always excited to work on new projects and help turn your ideas into reality.</p>
             </div>
-          </div>
-        </div>
 
-        {/* Footer */}
-        <div className="ct-footer">
-          Designed & Built by <span>Zaid Bin Ali</span> · {new Date().getFullYear()}
+            {/* Email */}
+            <div
+              className="ct-item"
+              onClick={copyEmail}
+              title={copied ? "Copied!" : "Click to copy"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className="ct-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(167,139,250,0.85)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div>
+                <div className="ct-item-label">Email</div>
+                <div className="ct-item-value">{copied ? "Copied!" : email}</div>
+              </div>
+            </div>
+
+            <div className="ct-divider-v" />
+
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/923113268460"
+              target="_blank"
+              rel="noreferrer"
+              className="ct-item"
+            >
+              <div className="ct-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(74,222,128,0.85)">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                </svg>
+              </div>
+              <div>
+                <div className="ct-item-label">WhatsApp</div>
+                <div className="ct-item-value">+92 311 3268460</div>
+              </div>
+            </a>
+
+            <div className="ct-divider-v" />
+
+            {/* Location */}
+            <div className="ct-item" style={{ cursor: "default" }}>
+              <div className="ct-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(96,165,250,0.85)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <div className="ct-item-label">Location</div>
+                <div className="ct-item-value">Karachi, Pakistan</div>
+              </div>
+            </div>
+
+            {/* Let's Talk button */}
+            <div className="ct-btn-wrap">
+              <a href={`mailto:${email}`} className="ct-btn">
+                Let's Talk
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </a>
+              <div className="ct-btn-hint">
+                <span className="green-dot" />
+                I usually respond within 12 hours
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
     </>

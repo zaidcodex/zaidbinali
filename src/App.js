@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Carousal from './Components/Carousal';
 import Skills from './Components/Skills';
+import Services from './Components/Services';
 import About from './Components/About';
 import Projects from './Components/Projects';
 import Contact from './Components/Contact';
@@ -25,10 +26,11 @@ function App() {
           <Route exact path="/">
      <Navbar/>
      <Carousal/>
-     <Skills/>
-     <About/>
+     <Services/>
      <Projects/>
+     <Skills/>
      <Contact/>
+     {/* <About/> */}
      <Footer/>
           </Route>
           <Route exact path="/admin">

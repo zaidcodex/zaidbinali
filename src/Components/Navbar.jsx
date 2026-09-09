@@ -14,12 +14,13 @@ const Navbar = () => {
   const navLinks = [
     { label: "Home",     href: "/" },
     { label: "About",    href: "#about" },
-    { label: "Skills",   href: "#skills" },
+    { label: "Services", href: "#services" },
     { label: "Projects", href: "#projects" },
+    { label: "Skills",   href: "#skills" },
     { label: "Contact",  href: "#contacts" },
   ];
 
-  const dotColors = ["#f72585", "#b5179e", "#7209b7", "#4361ee", "#4cc9f0"];
+  const dotColors = ["#f72585", "#b5179e", "#7209b7", "#4361ee", "#4cc9f0", "#7209b7"];
 
   return (
     <>
@@ -27,96 +28,114 @@ const Navbar = () => {
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
         .pf-navbar {
-          position: fixed;
+          position: relative;
           top: 0; left: 0; right: 0;
           z-index: 1000;
-          height: 68px;
-          display: flex;
+          height: 60px;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
           align-items: center;
-          justify-content: space-between;
-          padding: 0 2rem;
+          padding: 0 2.5rem;
           font-family: 'DM Sans', sans-serif;
           transition: background 0.3s ease, box-shadow 0.3s ease;
-          background: ${scrolled
-            ? "rgba(8, 6, 28, 0.92)"
-            : "rgba(10, 8, 30, 0.55)"};
+          background: ${scrolled ? "rgba(8,6,20,0.97)" : "rgba(8,6,20,0.85)"};
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-          box-shadow: ${scrolled ? "0 4px 32px rgba(0,0,0,0.45)" : "none"};
-        }
-
-        /* Animated gradient top border */
-        .pf-navbar::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, #f72585, #7209b7, #4361ee, #4cc9f0, #f72585);
-          background-size: 200%;
-          animation: navShimmer 4s linear infinite;
-        }
-        @keyframes navShimmer {
-          0%   { background-position: 0% }
-          100% { background-position: 200% }
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          box-shadow: ${scrolled ? "0 4px 32px rgba(0,0,0,0.5)" : "none"};
         }
 
         /* Logo */
         .pf-logo {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          text-decoration: none;
+          justify-self: start;
+        }
+        .pf-logo-icon {
+          width: 36px;
+          height: 36px;
+          background: linear-gradient(135deg, #6c3de8, #4f28c4);
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           font-family: 'Syne', sans-serif;
           font-weight: 800;
-          font-size: 1.45rem;
-          background: linear-gradient(135deg, #f72585, #b5179e, #7209b7);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-decoration: none;
-          letter-spacing: -0.5px;
-          white-space: nowrap;
+          font-size: 0.95rem;
+          color: #fff;
+          letter-spacing: -1px;
           flex-shrink: 0;
         }
-        .pf-logo span {
-          background: linear-gradient(135deg, #4cc9f0, #4361ee);
-          -webkit-background-clip: text;
-          background-clip: text;
+        .pf-logo-name {
+          font-family: 'Syne', sans-serif;
+          font-weight: 700;
+          font-size: 1.05rem;
+          color: #ffffff;
+          white-space: nowrap;
         }
 
         /* Desktop nav links */
         .pf-nav-links {
           display: flex;
           align-items: center;
-          gap: 0.2rem;
+          justify-content: center;
+          gap: 0rem;
           list-style: none;
           margin: 0; padding: 0;
         }
         .pf-nav-links a {
           font-family: 'DM Sans', sans-serif;
           font-size: 0.92rem;
-          font-weight: 500;
-          color: rgba(255,255,255,0.75);
+          font-weight: 400;
+          color: rgba(255,255,255,0.7);
           text-decoration: none;
-          padding: 0.45rem 1rem;
+          padding: 0.4rem 1rem;
           border-radius: 99px;
           transition: color 0.2s, background 0.2s;
         }
-        .pf-nav-links a:hover {
+        .pf-nav-links a:hover,
+        .pf-nav-links a.active {
           color: #fff;
-          background: rgba(255,255,255,0.08);
+        }
+        .pf-nav-links a.active {
+          color: #7c6ff7;
+          font-weight: 500;
         }
 
-        /* Resume pill */
-        .pf-resume-btn {
-          background: linear-gradient(135deg, #f72585, #7209b7) !important;
-          color: #fff !important;
-          font-weight: 600 !important;
-          padding: 0.45rem 1.25rem !important;
-          box-shadow: 0 0 18px rgba(247,37,133,0.4);
-          transition: box-shadow 0.25s, transform 0.2s !important;
+        /* Right side */
+        .pf-right {
+          justify-self: end;
+          display: flex;
+          align-items: center;
         }
-        .pf-resume-btn:hover {
-          box-shadow: 0 0 32px rgba(247,37,133,0.65) !important;
-          transform: translateY(-2px);
-          background: rgba(255,255,255,0.08) !important;
+
+        /* Hire Me button */
+        .pf-hireme-btn {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: #fff !important;
+          text-decoration: none;
+          padding: 0.4rem 1rem;
+          border-radius: 8px;
+          background: #6c3de8;
+          border: none;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          transition: background 0.2s, transform 0.2s;
+          white-space: nowrap;
+        }
+        .pf-hireme-btn:hover {
+          background: #5a2fd4;
+          transform: translateY(-1px);
+        }
+        .pf-hireme-btn .arrow {
+          font-size: 1rem;
+          line-height: 1;
         }
 
         /* Hamburger */
@@ -125,21 +144,21 @@ const Navbar = () => {
           flex-direction: column;
           justify-content: center;
           gap: 5px;
-          width: 42px; height: 42px;
+          width: 40px; height: 40px;
           padding: 9px;
-          border-radius: 10px;
-          background: rgba(255,255,255,0.07);
-          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 8px;
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.1);
           cursor: pointer;
           z-index: 1100;
           transition: background 0.2s;
         }
-        .pf-hamburger:hover { background: rgba(255,255,255,0.14); }
+        .pf-hamburger:hover { background: rgba(255,255,255,0.12); }
         .pf-hamburger span {
           display: block;
           height: 2px;
           border-radius: 2px;
-          background: linear-gradient(90deg, #f72585, #4361ee);
+          background: #fff;
           transition: all 0.35s cubic-bezier(.68,-.55,.27,1.55);
           transform-origin: center;
         }
@@ -150,10 +169,10 @@ const Navbar = () => {
         /* Mobile menu */
         .pf-mobile-menu {
           position: fixed;
-          top: 68px; left: 0; right: 0;
-          background: rgba(8, 6, 30, 0.97);
+          top: 60px; left: 0; right: 0;
+          background: rgba(8,6,20,0.98);
           backdrop-filter: blur(24px);
-          border-bottom: 1px solid rgba(255,255,255,0.08);
+          border-bottom: 1px solid rgba(255,255,255,0.07);
           padding: 1.5rem 1.5rem 2rem;
           display: flex;
           flex-direction: column;
@@ -171,12 +190,12 @@ const Navbar = () => {
         }
         .pf-mobile-menu a {
           font-family: 'Syne', sans-serif;
-          font-size: 1.05rem;
+          font-size: 1rem;
           font-weight: 600;
           color: rgba(255,255,255,0.8);
           text-decoration: none;
-          padding: 0.8rem 1.2rem;
-          border-radius: 12px;
+          padding: 0.75rem 1.2rem;
+          border-radius: 10px;
           display: flex;
           align-items: center;
           gap: 0.75rem;
@@ -184,8 +203,8 @@ const Navbar = () => {
           transition: all 0.2s ease;
         }
         .pf-mobile-menu a:hover {
-          background: rgba(255,255,255,0.06);
-          border-color: rgba(255,255,255,0.1);
+          background: rgba(255,255,255,0.05);
+          border-color: rgba(255,255,255,0.08);
           color: #fff;
           padding-left: 1.6rem;
         }
@@ -194,53 +213,54 @@ const Navbar = () => {
           border-radius: 50%;
           flex-shrink: 0;
         }
-        .pf-mobile-resume {
-          margin-top: 0.5rem;
-          background: linear-gradient(135deg, #f72585, #7209b7) !important;
+        .pf-mobile-hireme {
+          margin-top: 0.6rem;
+          background: #6c3de8 !important;
           color: #fff !important;
           border: none !important;
           justify-content: center !important;
-          box-shadow: 0 4px 20px rgba(247,37,133,0.35);
+          border-radius: 8px !important;
           font-weight: 700 !important;
         }
-        .pf-mobile-resume:hover {
+        .pf-mobile-hireme:hover {
+          background: #5a2fd4 !important;
           padding-left: 1.2rem !important;
-          box-shadow: 0 6px 28px rgba(247,37,133,0.5) !important;
         }
 
         @media (max-width: 768px) {
-          .pf-nav-links { display: none; }
+          .pf-nav-links, .pf-right { display: none; }
           .pf-hamburger { display: flex; }
-          .pf-navbar { padding: 0 1.2rem; }
+          .pf-navbar { padding: 0 1.2rem;grid-template-columns: 14fr auto; }
         }
       `}</style>
 
       <nav className="pf-navbar">
-        {/* Logo */}
+        {/* Logo — left */}
         <Link to="/" className="pf-logo">
-          Port<span>folio</span>
+          {/* <div className="pf-logo-icon">ZB</div> */}
+          <span className="pf-logo-name">Hamza Ali</span>
         </Link>
 
-        {/* Desktop Links */}
+        {/* Nav links — center */}
         <ul className="pf-nav-links">
           {navLinks.map(({ label, href }) => (
             <li key={label}>
-              <a href={href}>{label}</a>
+              <a href={href} >{label}</a>
             </li>
           ))}
-          <li>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pf-resume-btn"
-            >
-              Resume ↗
-            </a>
-          </li>
         </ul>
 
-        {/* Hamburger */}
+        {/* Hire Me button — right */}
+        <div className="pf-right">
+          <a
+            href="#contact"
+            className="pf-hireme-btn"
+          >
+            Hire Me <span className="arrow">↗</span>
+          </a>
+        </div>
+
+        {/* Hamburger (mobile) */}
         <div
           className={`pf-hamburger ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -260,13 +280,11 @@ const Navbar = () => {
           </a>
         ))}
         <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="pf-mobile-resume"
+          href="#contact"
+          className="pf-mobile-hireme"
           onClick={() => setMenuOpen(false)}
         >
-          Resume ↗
+          Hire Me ↗
         </a>
       </div>
     </>

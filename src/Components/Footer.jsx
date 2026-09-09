@@ -8,24 +8,35 @@ const Footer = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
+          @keyframes shimmerLine {
+          0%   { background-position: -200% center; }
+          100% { background-position: 200% center; }
+        }
+
+
         .ft-footer {
-          position: relative;
+           position: relative;
+          width: 100%;
+          background: #000000;
+          font-family: 'DM Sans', sans-serif;
+          padding: 30px 0 20px;
           overflow: hidden;
-          padding: 2.8rem 1.5rem;
-          background: linear-gradient(180deg, #06040f 0%, #030208 100%);
-          border-top: 1px solid rgba(255,255,255,0.06);
-          text-align: center;
         }
 
         /* shimmer top line */
         .ft-footer::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, #f72585, #7209b7, #4361ee, #4cc9f0, #f72585);
-          background-size: 200%;
-          animation: ftShimmer 4s linear infinite;
+           position: absolute;
+          left: 0; right: 0; height: 1px;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(108,61,232,0.5) 20%,
+            rgba(167,139,250,1) 50%,
+            rgba(108,61,232,0.5) 80%,
+            transparent 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmerLine 4s linear infinite;
         }
         @keyframes ftShimmer { 0%{background-position:0%} 100%{background-position:200%} }
 
@@ -40,8 +51,10 @@ const Footer = () => {
 
         .ft-inner {
           position: relative; z-index: 1;
-          display: flex; flex-direction: column;
-          align-items: center; gap: 0.5rem;
+          display: flex; 
+          justify-content: space-around;
+          flex-wrap: wrap;
+          align-items: center; 
         }
 
         .ft-text {
@@ -73,19 +86,56 @@ const Footer = () => {
         .ft-year {
           font-family: 'DM Sans', sans-serif;
           font-size: 0.72rem; font-weight: 400;
-          color: rgba(255,255,255,0.18);
+          color: rgba(255, 255, 255, 0.37);
           letter-spacing: 2px;
           text-transform: uppercase;
           margin: 0;
         }
+
+        .border-test{
+        border:2px solid red;
+        }
+
+        .pf-logo-name {
+          font-family: 'Syne', sans-serif;
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: #ffffff;
+          white-space: nowrap;
+        }
+
+        .icon-style{
+        display:flex;
+        justify-content: center;
+        gap: 1rem;
+        font-size:28px;
+        }
+        @media (max-width: 768px) {
+  .ft-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+    .wid{
+    width:100%;
+    }
+
+  .icon-style {
+    justify-content: center;
+  }
+}
       `}</style>
 
       <footer className="ft-footer">
-        <div className="ft-inner">
-          <p className="ft-text">
-            Made with <i className="ft-heart">♥</i> by <span className="ft-name">Zaid Bin Ali</span>
-          </p>
+        <div className="ft-inner ft-text">
+          <div className="  wid"><span className="pf-logo-name">Hamza Ali</span></div>
+          <div className="wid ">
+          {/* <p className="ft-text">
+            Made with <i className="ft-heart">♥</i> by <span className="ft-name">Hamza Ali</span>
+          </p> */}
           <p className="ft-year">© {year} · All rights reserved</p>
+          </div>
+          <div className="wid icon-style"><i class="fa-brands fa-github"></i><i class="fa-brands fa-linkedin"></i><i class="fa-brands fa-square-whatsapp"></i><i class="fa-solid fa-envelope"></i></div>
         </div>
       </footer>
     </>
