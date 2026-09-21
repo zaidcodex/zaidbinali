@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
-  const email = "hamzaali48@gmail.com";
+  const email = "zaidalicodex@gmail.com";
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -247,7 +247,7 @@ const Contact = () => {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/923113268460"
+              href="https://wa.me/923121235828"
               target="_blank"
               rel="noreferrer"
               className="ct-item"
@@ -259,7 +259,7 @@ const Contact = () => {
               </div>
               <div>
                 <div className="ct-item-label">WhatsApp</div>
-                <div className="ct-item-value">+92 311 3268460</div>
+                <div className="ct-item-value">+92 312 1235828</div>
               </div>
             </a>
 

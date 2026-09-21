@@ -238,7 +238,7 @@ const Navbar = () => {
         {/* Logo — left */}
         <Link to="/" className="pf-logo">
           {/* <div className="pf-logo-icon">ZB</div> */}
-          <span className="pf-logo-name">Hamza Ali</span>
+          <span className="pf-logo-name">Zaid Bin Ali</span>
         </Link>
 
         {/* Nav links — center */}

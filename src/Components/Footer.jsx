@@ -128,10 +128,10 @@ const Footer = () => {
 
       <footer className="ft-footer">
         <div className="ft-inner ft-text">
-          <div className="  wid"><span className="pf-logo-name">Hamza Ali</span></div>
+          <div className="  wid"><span className="pf-logo-name">Zaid Bin Ali</span></div>
           <div className="wid ">
           {/* <p className="ft-text">
-            Made with <i className="ft-heart">♥</i> by <span className="ft-name">Hamza Ali</span>
+            Made with <i className="ft-heart">♥</i> by <span className="ft-name">Zaid Bin Ali</span>
           </p> */}
           <p className="ft-year">© {year} · All rights reserved</p>
           </div>
